@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1667193909180190885}
+  - component: {fileID: 5646713083922542025}
   - component: {fileID: 8149653818151504744}
   - component: {fileID: 504132012499113318}
-  - component: {fileID: 5646713083922542025}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -35,6 +35,33 @@ Transform:
   - {fileID: 4865301141106777570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5646713083922542025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618197279141127526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db16b78a1715444449e7378cd88e0f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorCharacter: 1
+  skinnedMeshRenderer: {fileID: 4593005162875994046}
+  colorData: {fileID: 11400000, guid: e4b2c576b5127094c90057f678e022c3, type: 2}
+  characterBrickPrefab: {fileID: 2713778044762302904, guid: 299c5c0e444d0064cb61d9334a242d8a, type: 3}
+  characterBrickParent: {fileID: 5043970780941522744}
+  listCharacterBrick: []
+  characterAnimPosStair: {fileID: 4865301141106777570}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isStair: 0
+  rayDist: {x: 0, y: 0, z: 0.55}
+  speed: 5
+  rb: {fileID: 504132012499113318}
+  rotationPlayer: {fileID: 4865301141106777570}
 --- !u!136 &8149653818151504744
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -85,33 +112,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5646713083922542025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2618197279141127526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db16b78a1715444449e7378cd88e0f53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorCharacter: 1
-  skinnedMeshRenderer: {fileID: 4593005162875994046}
-  colorData: {fileID: 11400000, guid: e4b2c576b5127094c90057f678e022c3, type: 2}
-  characterBrickPrefab: {fileID: 2713778044762302904, guid: 299c5c0e444d0064cb61d9334a242d8a, type: 3}
-  characterBrickParent: {fileID: 5043970780941522744}
-  listCharacterBrick: []
-  characterAnimPosStair: {fileID: 4865301141106777570}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  isStair: 0
-  rayDist: {x: 0, y: 0, z: 0.55}
-  speed: 5
-  rb: {fileID: 504132012499113318}
-  rotationPlayer: {fileID: 4865301141106777570}
 --- !u!1 &7749033452451825239
 GameObject:
   m_ObjectHideFlags: 0

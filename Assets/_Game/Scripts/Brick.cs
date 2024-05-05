@@ -10,16 +10,18 @@ public class Brick : MonoBehaviour
     [SerializeField] private int timeToEnable = 5;
     public ColorType brickCurrentColor;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         OnInit();
+    }
+    void Start()
+    {
     }
 
     // Update is called once per frame
     void Update()
     {
-      
 
         if (meshRenderer.enabled == false)
         {

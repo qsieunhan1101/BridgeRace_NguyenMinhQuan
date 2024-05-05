@@ -29,12 +29,8 @@ public class Player : Character
         GetDirection();
         GetRotationState();
         StairStanding();
-        //RayCheckStair();
-
         ChangeColor(colorCharacter);
 
-        
-        Debug.Log(transform.forward);
     }
     private void Move()
     {

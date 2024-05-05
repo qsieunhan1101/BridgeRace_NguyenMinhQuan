@@ -15,6 +15,25 @@ public class JoystickController : MonoBehaviour
     private Vector2 MousePosition => new Vector2(Input.mousePosition.x, Input.mousePosition.y) - screen / 2;
 
     private Vector2 TouchPosition => Input.GetTouch(0).position - screen / 2;
+
+
+    private Vector2 TP
+    {
+        get
+        {
+            Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+            Vector2 screenCenter = screenSize / 2f;
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                return touch.position - screenCenter;
+            }
+            else
+            {
+                return Vector2.zero;
+            }
+        }
+    }
     private void Awake()
     {
         screen.x = Screen.width;
@@ -65,14 +84,14 @@ public class JoystickController : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)
             {
-                startPos = TouchPosition;
+                startPos = TP;
                 joystick.SetActive(true);
                 bg.anchoredPosition = startPos;
                 knob.anchoredPosition = startPos;
             }
             if (touch.phase == TouchPhase.Moved)
             {
-                currentPos = TouchPosition;
+                currentPos = TP;
                 knob.anchoredPosition = Vector2.ClampMagnitude((currentPos - startPos), knobRange) + startPos;
                 //Debug.Log(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 0));
             }
