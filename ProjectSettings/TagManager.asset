@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Brick
   - HiddenBrick
-  - StartPoint
+  - Enemy
+  - StagePoint
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Step
-  - 
+  - Brick
   - 
   - 
   - 

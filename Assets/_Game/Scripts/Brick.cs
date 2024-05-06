@@ -51,7 +51,7 @@ public class Brick : MonoBehaviour
     }
     private void ChangeToVisible()
     {
-        this.gameObject.tag = "Brick";
+        this.gameObject.tag = Constants.Tag_Brick;
         BoxCollider box = gameObject.GetComponent<BoxCollider>();
         box.enabled = false;
         meshRenderer.enabled = true;

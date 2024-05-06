@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     [SerializeField] private List<GameObject> listCharacterBrick;
 
 
+
+
     [SerializeField] private Transform characterAnimPosStair;
 
 
@@ -74,7 +76,7 @@ public class Character : MonoBehaviour
         Debug.DrawRay(transform.position + rayDist + Vector3.up * 2, Vector3.down * 10, Color.red);
         if (Physics.Raycast(ray, out hit, 5f, layerMask))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Step"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer(Constants.Layer_Step))
             {
                 isStair = true;
                 Step step = hit.collider.gameObject.GetComponent<Step>();
@@ -100,9 +102,9 @@ public class Character : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Step") && other.gameObject.GetComponent<Step>().stepCurrentColor != colorCharacter)
+        if (other.gameObject.layer == LayerMask.NameToLayer(Constants.Layer_Step) && other.gameObject.GetComponent<Step>().stepCurrentColor != colorCharacter)
         {
 
             Step step = other.gameObject.GetComponent<Step>();
@@ -113,12 +115,13 @@ public class Character : MonoBehaviour
             }
 
         }
-        if (other.gameObject.CompareTag("Brick") && other.gameObject.GetComponent<Brick>().brickCurrentColor == colorCharacter)
+        if (other.gameObject.CompareTag(Constants.Tag_Brick) && other.gameObject.GetComponent<Brick>().brickCurrentColor == colorCharacter)
         {
             MeshRenderer mesh = other.gameObject.GetComponent<MeshRenderer>();
             mesh.enabled = false;
-            other.gameObject.tag = "HiddenBrick";
+            other.gameObject.tag = Constants.Tag_HiddenBrick;
             AddBrick();
         }
+
     }
 }

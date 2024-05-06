@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3484067272517146707}
   - component: {fileID: 3016685229568507022}
   - component: {fileID: 3635872784083671742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brick
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -120,5 +120,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 3484067272517146707}
   colorData: {fileID: 11400000, guid: e4b2c576b5127094c90057f678e022c3, type: 2}
-  brickCurrentColor: 0
   timeToEnable: 5
+  brickCurrentColor: 0
