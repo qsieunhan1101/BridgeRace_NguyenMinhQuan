@@ -8926,8 +8926,11 @@ MonoBehaviour:
     m_Bits: 64
   isStair: 0
   rayDist: {x: 0, y: 0, z: 0.5}
-  agent: {fileID: 206926593}
+  enemyStageNumber: 0
   listSameColor: []
+  stageManager: {fileID: 0}
+  agent: {fileID: 206926593}
+  isSetDestination: 1
 --- !u!4 &206926590
 Transform:
   m_ObjectHideFlags: 0
@@ -8937,7 +8940,7 @@ Transform:
   m_GameObject: {fileID: 206926588}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.28, y: 0.95, z: -15.76}
+  m_LocalPosition: {x: -1.28, y: 0.95, z: -17.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8990,7 +8993,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -9004,10 +9007,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 5
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 180
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -12041,6 +12044,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9122379383727275853, guid: 3cc687430740f654a88846c5280849df, type: 3}
   m_PrefabInstance: {fileID: 1353268445}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &296944786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2618197279141127526, guid: 213defba834a3bc44b1998ceb5edf9fa, type: 3}
+  m_PrefabInstance: {fileID: 996889785531412392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &297774128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12109,7 +12117,6 @@ GameObject:
   - component: {fileID: 298724092}
   - component: {fileID: 298724094}
   - component: {fileID: 298724093}
-  - component: {fileID: 298724095}
   m_Layer: 0
   m_Name: ListBrick
   m_TagString: Untagged
@@ -12381,18 +12388,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &298724095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298724091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d278e201922172045acecfb236e57aaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &299242546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39104,7 +39099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  target: {fileID: 206926588}
+  target: {fileID: 296944786}
   smoothTime: 0
   distanceFormTager: 10
   heightAboveTager: 15
@@ -49413,6 +49408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9449940699be80548b41d82f89ce2b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageNumber: 1
   listBrickManager:
   - {fileID: 1745069794}
   - {fileID: 1424904348}
@@ -85560,7 +85556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5646713083922542025, guid: 213defba834a3bc44b1998ceb5edf9fa, type: 3}
       propertyPath: speed
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8149653818151504744, guid: 213defba834a3bc44b1998ceb5edf9fa, type: 3}
       propertyPath: m_Material

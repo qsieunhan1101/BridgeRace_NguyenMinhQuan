@@ -4,15 +4,23 @@ using UnityEngine.AI;
 
 public class Enemy : Character
 {
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private int enemyStageNumber;
 
     [SerializeField] private List<Transform> listSameColor;
 
     [SerializeField] private StageManager stageManager;
+    [SerializeField] private NavMeshAgent agent;
+
 
     private Vector3 destinationTager;
 
-    private IState currentState;
+    [SerializeField] private IState currentState;
+
+    private float minDistance;
+
+
+    [SerializeField] private bool isSetDestination = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,27 +37,42 @@ public class Enemy : Character
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                agent.SetDestination(hit.point);
+                //agent.SetDestination(hit.point);
+            }
+        }
+        
+
+        if (Vector3.Distance(transform.position, destinationTager) <= 0.1f)
+        {
+            isSetDestination = true;
+        }
+        if (isSetDestination)
+        {
+            Move();
+            isSetDestination = false;
+        }
+
+        
+    }
+
+    private void Move()
+    {
+        SetAgentDestination();
+        agent.SetDestination(destinationTager);
+    }
+
+    public void SetAgentDestination()
+    {
+        if (listSameColor != null)
+        {
+            int ran = Random.Range(0, listSameColor.Count);
+            if (listSameColor[ran].gameObject.tag == Constants.Tag_Brick)
+            {
+                destinationTager = listSameColor[ran].position;
             }
         }
 
 
-        //Move();
-
-
-
-        if (currentState != null)
-        {
-            currentState.OnExecute(this);
-        }
-    }
-
-
-    private void Move()
-    {
-        //lay vi tri dich den??
-
-        agent.SetDestination(destinationTager);
     }
 
     public void StopMoving()
@@ -58,7 +81,15 @@ public class Enemy : Character
     }
     public void ChangeState(IState newState)
     {
-
+        /*if (currentState != null)
+        {
+            currentState.OnExit(this);
+        }
+        currentState = newState;
+        if (currentState != null)
+        {
+            currentState.OnEnter(this);
+        }*/
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -67,13 +98,26 @@ public class Enemy : Character
         if (other.gameObject.CompareTag(Constants.Tag_StagePoint))
         {
             stageManager = other.gameObject.GetComponent<StageManager>();
-            for (int i = 0; i <= stageManager.listBrickManager.Count - 1; i++)
+
+            if (enemyStageNumber == stageManager.StageNumber)
             {
-                if (stageManager.listBrickManager[i].GetComponent<Brick>().brickCurrentColor == this.colorCharacter)
+                return;
+            }
+            else
+            {
+
+                for (int i = 0; i <= stageManager.listBrickManager.Count - 1; i++)
                 {
-                    listSameColor.Add(stageManager.listBrickManager[i].transform);
+                    if (stageManager.listBrickManager[i].GetComponent<Brick>().brickCurrentColor == this.colorCharacter)
+                    {
+                        listSameColor.Add(stageManager.listBrickManager[i].transform);
+                    }
                 }
             }
+            destinationTager = listSameColor[0].position;
+            minDistance = Vector3.Distance(transform.position, listSameColor[0].position);
+
+            enemyStageNumber = stageManager.StageNumber;
         }
     }
 }

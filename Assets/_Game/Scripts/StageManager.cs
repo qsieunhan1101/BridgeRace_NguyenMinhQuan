@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    [SerializeField] private int stageNumber;
+    public int StageNumber
+    {
+        get
+        {
+            return stageNumber;
+        }
+    }
 
     [SerializeField] public List<GameObject> listBrickManager;
 
@@ -28,7 +36,7 @@ public class StageManager : MonoBehaviour
                 }
 
             }
-            gameObject.SetActive(false);
+            
         }
     }
 }
