@@ -7,6 +7,8 @@ public class Constants
     public const string Tag_StagePoint = "StagePoint";
     public const string Tag_HiddenBrick = "HiddenBrick";
 
+    public const string Tag_FinishBox = "FinishBox";
+
 
 
 

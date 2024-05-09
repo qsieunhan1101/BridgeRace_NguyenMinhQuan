@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     [SerializeField] private ColorData colorData;
     [SerializeField] private GameObject characterBrickPrefab;
     [SerializeField] private Transform characterBrickParent;
-    [SerializeField] private List<GameObject> listCharacterBrick;
+    [SerializeField] public List<GameObject> listCharacterBrick;
 
 
 
@@ -16,7 +16,6 @@ public class Character : MonoBehaviour
     [SerializeField] private Transform characterAnimPosStair;
 
 
-    [SerializeField] private LayerMask layerMask;
 
     [SerializeField] protected bool isStair = false;
 
@@ -24,7 +23,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        OnInit();
     }
 
     // Update is called once per frame
@@ -33,7 +32,7 @@ public class Character : MonoBehaviour
 
 
     }
-    protected void OnInit()
+    protected virtual void OnInit()
     {
         ChangeColor((ColorType)Random.Range(1, 6));
     }
@@ -74,7 +73,7 @@ public class Character : MonoBehaviour
         Ray ray = new Ray(transform.position + rayDist + Vector3.up * 2, Vector3.down);
         RaycastHit hit;
         Debug.DrawRay(transform.position + rayDist + Vector3.up * 2, Vector3.down * 10, Color.red);
-        if (Physics.Raycast(ray, out hit, 5f, layerMask))
+        if (Physics.Raycast(ray, out hit, 5f))
         {
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer(Constants.Layer_Step))
             {

@@ -1,30 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+
 public class FindBrickState : IState
 {
     private float time;
     private float randomTime;
-    public void OnEnter(Enemy enemy)
+    public void OnEnter(Bot bot)
     {
         time = 0f;
-        randomTime = Random.Range(5,8);
+        randomTime = Random.Range(8,10);
+        bot.StopMoving();
     }
 
-    public void OnExecute(Enemy enemy)
+    public void OnExecute(Bot bot)
     {
         time += Time.deltaTime;
-
-        enemy.SetAgentDestination();
 
 
         if (time > randomTime)
         {
-            enemy.ChangeState(new GoFinishState());
+            bot.ChangeState(new GoFinishState());
+        }
+
+        if (Vector3.Distance(bot.transform.position, bot.DestinationTarget) <= 0.1f)
+        {
+            bot.ChangeIsDestination(true);
+        }
+        if (bot.IsSetDestination)
+        {
+            bot.SetAgentDestination();
+            bot.Move();
+            bot.ChangeIsDestination(false);
         }
     }
 
-    public void OnExit(Enemy enemy)
+    public void OnExit(Bot bot)
     {
     }
 }

@@ -6,22 +6,22 @@ public class IdleState : IState
 {
     float time;
     float timeIdle;
-    public void OnEnter(Enemy enemy)
+    public void OnEnter(Bot bot)
     {
-        enemy.StopMoving();
-        timeIdle = 0.5f;
+        bot.StopMoving();
+        timeIdle = 1f;
     }
 
-    public void OnExecute(Enemy enemy)
+    public void OnExecute(Bot bot)
     {
         time += Time.deltaTime;
         if (time >= timeIdle)
         {
-            enemy.ChangeState(new FindBrickState());
+            bot.ChangeState(new FindBrickState());
         }
     }
 
-    public void OnExit(Enemy enemy)
+    public void OnExit(Bot bot)
     {
 
     }

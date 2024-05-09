@@ -1,25 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
-public class Enemy : Character
+public class Bot : Character
 {
-    [SerializeField] private int enemyStageNumber;
+    [SerializeField] private int enemyCurrentStage;
 
     [SerializeField] private List<Transform> listSameColor;
 
     [SerializeField] private StageManager stageManager;
     [SerializeField] private NavMeshAgent agent;
 
+    public Transform finishBox;
 
-    private Vector3 destinationTager;
+
+    private Vector3 destinationTarget;
+    public Vector3 DestinationTarget => destinationTarget;
 
     [SerializeField] private IState currentState;
 
-    private float minDistance;
 
 
     [SerializeField] private bool isSetDestination = true;
+    public bool IsSetDestination => isSetDestination;
 
     // Start is called before the first frame update
     void Start()
@@ -31,44 +35,34 @@ public class Enemy : Character
     void Update()
     {
         StairStanding();
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                //agent.SetDestination(hit.point);
-            }
-        }
-        
+    
 
-        if (Vector3.Distance(transform.position, destinationTager) <= 0.1f)
+        if (currentState != null)
         {
-            isSetDestination = true;
+            currentState.OnExecute(this);
         }
-        if (isSetDestination)
-        {
-            Move();
-            isSetDestination = false;
-        }
-
-        
     }
 
-    private void Move()
+    protected override void OnInit()
     {
-        SetAgentDestination();
-        agent.SetDestination(destinationTager);
+        base.OnInit();
+        ChangeState(new IdleState());
+        finishBox = GameObject.FindGameObjectWithTag(Constants.Tag_FinishBox).transform;
+    }
+
+    public void Move()
+    {
+        agent.SetDestination(destinationTarget);
     }
 
     public void SetAgentDestination()
     {
         if (listSameColor != null)
         {
-            int ran = Random.Range(0, listSameColor.Count);
+            int ran = Random.Range(0, listSameColor.Count-1);
             if (listSameColor[ran].gameObject.tag == Constants.Tag_Brick)
             {
-                destinationTager = listSameColor[ran].position;
+                destinationTarget = listSameColor[ran].position;
             }
         }
 
@@ -77,11 +71,12 @@ public class Enemy : Character
 
     public void StopMoving()
     {
-        agent.SetDestination(transform.position);
+        destinationTarget = transform.position;
+        agent.SetDestination(destinationTarget);
     }
     public void ChangeState(IState newState)
     {
-        /*if (currentState != null)
+        if (currentState != null)
         {
             currentState.OnExit(this);
         }
@@ -89,7 +84,7 @@ public class Enemy : Character
         if (currentState != null)
         {
             currentState.OnEnter(this);
-        }*/
+        }
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -97,9 +92,10 @@ public class Enemy : Character
         base.OnTriggerEnter(other);
         if (other.gameObject.CompareTag(Constants.Tag_StagePoint))
         {
+            ClearListSameColor();
             stageManager = other.gameObject.GetComponent<StageManager>();
 
-            if (enemyStageNumber == stageManager.StageNumber)
+            if (enemyCurrentStage == stageManager.StageNumber)
             {
                 return;
             }
@@ -114,10 +110,28 @@ public class Enemy : Character
                     }
                 }
             }
-            destinationTager = listSameColor[0].position;
-            minDistance = Vector3.Distance(transform.position, listSameColor[0].position);
+            destinationTarget = listSameColor[0].position;
 
-            enemyStageNumber = stageManager.StageNumber;
+            enemyCurrentStage = stageManager.StageNumber;
         }
+    }
+
+    private void ClearListSameColor()
+    {
+        listSameColor.Clear();
+    }
+
+
+
+
+
+    public bool ChangeIsDestination(bool a)
+    {
+        isSetDestination = a;
+        return isSetDestination;
+    }
+    public void ChangeDestination(Vector3 target)
+    {
+        destinationTarget = target;
     }
 }

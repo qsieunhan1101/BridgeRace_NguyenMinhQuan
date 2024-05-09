@@ -8,6 +8,8 @@ TagManager:
   - HiddenBrick
   - Enemy
   - StagePoint
+  - FinishBox
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Step
   - Brick
-  - 
+  - Pillar
   - 
   - 
   - 

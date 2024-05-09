@@ -19,7 +19,6 @@ public class Player : Character
     {
         screen.x = Screen.width;
         screen.y = Screen.height;
-        OnInit();
     }
 
     // Update is called once per frame

@@ -1,9 +1,9 @@
 public interface IState
 {
-    void OnEnter(Enemy enemy);
+    void OnEnter(Bot bot);
 
-    void OnExecute(Enemy enemy);
+    void OnExecute(Bot bot);
 
-    void OnExit(Enemy enemy);
+    void OnExit(Bot bot);
 
 }

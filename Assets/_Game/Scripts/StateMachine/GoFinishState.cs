@@ -1,15 +1,26 @@
 
+using UnityEngine;
+
 public class GoFinishState : IState
 {
-    public void OnEnter(Enemy enemy)
+    
+    public void OnEnter(Bot bot)
     {
+        
     }
 
-    public void OnExecute(Enemy enemy)
+    public void OnExecute(Bot bot)
     {
+
+        bot.ChangeDestination(bot.finishBox.position);
+        bot.Move();
+        if (bot.listCharacterBrick.Count <=0)
+        {
+            bot.ChangeState(new FindBrickState());
+        }
     }
 
-    public void OnExit(Enemy enemy)
+    public void OnExit(Bot bot)
     {
     }
 }
