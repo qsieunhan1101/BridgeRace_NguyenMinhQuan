@@ -6,10 +6,10 @@ TagManager:
   tags:
   - Brick
   - HiddenBrick
-  - Enemy
   - StagePoint
   - FinishBox
   - Floor
+  - Bot
   layers:
   - Default
   - TransparentFX
@@ -20,7 +20,7 @@ TagManager:
   - Step
   - Brick
   - Pillar
-  - 
+  - Bot
   - 
   - 
   - 

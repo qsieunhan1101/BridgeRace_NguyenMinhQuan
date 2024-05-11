@@ -93,4 +93,15 @@ public class Player : Character
         rotationPlayer.rotation = Quaternion.LookRotation(rotationDirect);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        if (other.gameObject.CompareTag(Constants.Tag_FinishBox))
+        {
+            UIManager.Instance.CloseAll();
+            UIManager.Instance.OpenUI<CanvasVictory>();
+            GameManager.Instance.ChangeState(GameState.Victory);
+
+        }
+    }
 }

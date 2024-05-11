@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        SetUpCamera();
+        //SetUpCamera();
     }
 
     // Update is called once per frame
@@ -34,11 +34,12 @@ public class CameraFollow : MonoBehaviour
 
     }
 
-    private void SetUpCamera()
+    public void SetUpCamera()
     {
         Vector3 newPosition = target.transform.position - target.transform.forward * distanceFormTager;
         newPosition.y = target.transform.position.y + heightAboveTager;
         transform.position = newPosition;
         offset = transform.position - target.transform.position;
     }
+ 
 }

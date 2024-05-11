@@ -25,7 +25,7 @@ public class StageManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(Constants.Tag_Player) || other.gameObject.CompareTag(Constants.Tag_Enemy))
+        if (other.gameObject.CompareTag(Constants.Tag_Player) || other.gameObject.CompareTag(Constants.Tag_Bot))
         {
             Character charac = other.gameObject.GetComponent<Character>();
             for (int i = 0; i <= listBrickManager.Count - 1; i++)

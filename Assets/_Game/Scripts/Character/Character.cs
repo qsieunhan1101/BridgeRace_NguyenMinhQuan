@@ -34,7 +34,7 @@ public class Character : MonoBehaviour
     }
     protected virtual void OnInit()
     {
-        ChangeColor((ColorType)Random.Range(1, 6));
+        //ChangeColor((ColorType)Random.Range(1, 6));
     }
 
     protected void AddBrick()
@@ -122,5 +122,10 @@ public class Character : MonoBehaviour
             AddBrick();
         }
 
+    }
+
+    public void SetChangeColor(int i)
+    {
+        ChangeColor((ColorType)i);
     }
 }

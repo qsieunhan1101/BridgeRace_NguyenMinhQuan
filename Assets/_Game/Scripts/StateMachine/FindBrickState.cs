@@ -10,7 +10,7 @@ public class FindBrickState : IState
     public void OnEnter(Bot bot)
     {
         time = 0f;
-        randomTime = Random.Range(8,10);
+        randomTime = Random.Range(7,10);
         bot.StopMoving();
     }
 

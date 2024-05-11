@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class Bot : Character
 {
-    [SerializeField] private int enemyCurrentStage;
+    [SerializeField] private int botCurrentStage;
 
     [SerializeField] private List<Transform> listSameColor;
 
@@ -35,7 +34,7 @@ public class Bot : Character
     void Update()
     {
         StairStanding();
-    
+
 
         if (currentState != null)
         {
@@ -59,10 +58,15 @@ public class Bot : Character
     {
         if (listSameColor != null)
         {
-            int ran = Random.Range(0, listSameColor.Count-1);
+            int ran = Random.Range(0, listSameColor.Count - 1);
+
             if (listSameColor[ran].gameObject.tag == Constants.Tag_Brick)
             {
                 destinationTarget = listSameColor[ran].position;
+            }
+            else
+            {
+                destinationTarget = listSameColor[0].position;
             }
         }
 
@@ -87,6 +91,21 @@ public class Bot : Character
         }
     }
 
+
+    private void ClearListSameColor()
+    {
+        listSameColor.Clear();
+    }
+
+    public bool ChangeIsDestination(bool a)
+    {
+        isSetDestination = a;
+        return isSetDestination;
+    }
+    public void ChangeDestination(Vector3 target)
+    {
+        destinationTarget = target;
+    }
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
@@ -95,7 +114,7 @@ public class Bot : Character
             ClearListSameColor();
             stageManager = other.gameObject.GetComponent<StageManager>();
 
-            if (enemyCurrentStage == stageManager.StageNumber)
+            if (botCurrentStage == stageManager.StageNumber)
             {
                 return;
             }
@@ -112,26 +131,14 @@ public class Bot : Character
             }
             destinationTarget = listSameColor[0].position;
 
-            enemyCurrentStage = stageManager.StageNumber;
+            botCurrentStage = stageManager.StageNumber;
+        }
+        if (other.gameObject.CompareTag(Constants.Tag_FinishBox))
+        {
+            UIManager.Instance.CloseAll();
+            UIManager.Instance.OpenUI<CanvasFail>();
+            GameManager.Instance.ChangeState(GameState.Fail);
         }
     }
 
-    private void ClearListSameColor()
-    {
-        listSameColor.Clear();
-    }
-
-
-
-
-
-    public bool ChangeIsDestination(bool a)
-    {
-        isSetDestination = a;
-        return isSetDestination;
-    }
-    public void ChangeDestination(Vector3 target)
-    {
-        destinationTarget = target;
-    }
 }
