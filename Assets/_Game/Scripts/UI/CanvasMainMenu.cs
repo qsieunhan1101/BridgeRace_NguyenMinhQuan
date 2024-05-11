@@ -21,6 +21,9 @@ public class CanvasMainMenu : UICanvas
         Close(0);
         UIManager.Instance.OpenUI<CanvasGamePlay>();
         GameManager.Instance.ChangeState(GameState.Gameplay);
+        LevelManager.Instance.level = 1;
+        LevelManager.Instance.SaveLevel();
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.level);
     }
 
     public void OnClickContinue()
@@ -28,5 +31,6 @@ public class CanvasMainMenu : UICanvas
         Close(0);
         UIManager.Instance.OpenUI<CanvasGamePlay>();
         GameManager.Instance.ChangeState(GameState.Gameplay);
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.GetLevelInSave());
     }
 }

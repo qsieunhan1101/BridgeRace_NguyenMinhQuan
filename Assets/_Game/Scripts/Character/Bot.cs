@@ -24,6 +24,7 @@ public class Bot : Character
     [SerializeField] private bool isSetDestination = true;
     public bool IsSetDestination => isSetDestination;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +47,6 @@ public class Bot : Character
     {
         base.OnInit();
         ChangeState(new IdleState());
-        finishBox = GameObject.FindGameObjectWithTag(Constants.Tag_FinishBox).transform;
     }
 
     public void Move()

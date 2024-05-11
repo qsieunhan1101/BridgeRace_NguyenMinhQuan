@@ -2870,7 +2870,7 @@ GameObject:
   - component: {fileID: 2990286006848509928}
   - component: {fileID: 1466451393912061402}
   m_Layer: 0
-  m_Name: Map
+  m_Name: Level_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2921,7 +2921,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: bde9c85121fdc5e4d8a06567eebc3c72, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 62edf9a569cd8084ba49e2bea74af32a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &1466451393912061402
 MonoBehaviour:
@@ -2941,6 +2941,7 @@ MonoBehaviour:
   - {fileID: 2031577139476337463}
   - {fileID: 4775572865124166572}
   - {fileID: 7576209781893253085}
+  endPoint: {fileID: 6733027785078461120}
 --- !u!1 &6398552587158448288
 GameObject:
   m_ObjectHideFlags: 0
@@ -13470,6 +13471,11 @@ PrefabInstance:
 --- !u!4 &642727304048286673 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055819072941906325, guid: 4af24abde3b58b748baab1d1fb04175d, type: 3}
+  m_PrefabInstance: {fileID: 1471781655182230084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6733027785078461120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5268178602519498884, guid: 4af24abde3b58b748baab1d1fb04175d, type: 3}
   m_PrefabInstance: {fileID: 1471781655182230084}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1488176484664064747

@@ -19,13 +19,13 @@ public class CanvasFail : UICanvas
         Close(0);
         UIManager.Instance.OpenUI<CanvasGamePlay>();
         GameManager.Instance.ChangeState(GameState.Gameplay);
-
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.GetLevelInSave());
     }
     public void OnClickMainMenu()
     {
         Close(0);
         UIManager.Instance.OpenUI<CanvasMainMenu>();
         GameManager.Instance.ChangeState(GameState.MainMenu);
-
+        LevelManager.Instance.DestroyLevel();
     }
 }

@@ -18,7 +18,7 @@ public class CanvasVictory : UICanvas
         Close(0);
         UIManager.Instance.OpenUI<CanvasGamePlay>();
         GameManager.Instance.ChangeState(GameState.Gameplay);
-
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.GetLevelInSave());
     }
 
     public void OnClickRetry()
@@ -26,6 +26,9 @@ public class CanvasVictory : UICanvas
         Close(0);
         UIManager.Instance.OpenUI<CanvasGamePlay>();
         GameManager.Instance.ChangeState(GameState.Gameplay);
+        LevelManager.Instance.DestroyLevel();
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.GetLevelInSave());
+        
 
     }
     public void OnClickMainMenu()
@@ -33,6 +36,7 @@ public class CanvasVictory : UICanvas
         Close(0);
         UIManager.Instance.OpenUI<CanvasMainMenu>();
         GameManager.Instance.ChangeState(GameState.MainMenu);
+        LevelManager.Instance.DestroyLevel();
 
     }
 }

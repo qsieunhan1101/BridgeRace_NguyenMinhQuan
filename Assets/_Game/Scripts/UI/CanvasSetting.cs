@@ -35,7 +35,7 @@ public class CanvasSetting : UICanvas
         UIManager.Instance.CloseAll();
         UIManager.Instance.OpenUI<CanvasMainMenu>();
         GameManager.Instance.ChangeState(GameState.MainMenu);
-
+        LevelManager.Instance.DestroyLevel();
     }
 
     public void OnClickContinue()

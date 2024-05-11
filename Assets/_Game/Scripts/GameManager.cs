@@ -14,12 +14,13 @@ public class GameManager : Singleton<GameManager>
     private static GameState currentState;
     public static GameState CurrentState => currentState;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        /*UIManager.Instance.OpenUI<CanvasMainMenu>();
-        ChangeState(GameState.MainMenu);*/
-        LevelManager.Instance.LoadLevel();
+        UIManager.Instance.OpenUI<CanvasMainMenu>();
+        ChangeState(GameState.MainMenu);
+        //LevelManager.Instance.LoadLevel(level);
     }
 
     // Update is called once per frame

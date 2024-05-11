@@ -102,6 +102,9 @@ public class Player : Character
             UIManager.Instance.OpenUI<CanvasVictory>();
             GameManager.Instance.ChangeState(GameState.Victory);
 
+            LevelManager.Instance.level++;
+            LevelManager.Instance.SaveLevel();
+
         }
     }
 }

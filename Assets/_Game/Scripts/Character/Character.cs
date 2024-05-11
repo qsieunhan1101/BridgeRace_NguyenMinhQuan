@@ -121,7 +121,6 @@ public class Character : MonoBehaviour
             other.gameObject.tag = Constants.Tag_HiddenBrick;
             AddBrick();
         }
-
     }
 
     public void SetChangeColor(int i)
