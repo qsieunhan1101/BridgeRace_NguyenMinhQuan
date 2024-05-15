@@ -66,7 +66,7 @@ public class Bot : Character
             }
             else
             {
-                destinationTarget = listSameColor[0].position;
+                destinationTarget = transform.position;
             }
         }
 

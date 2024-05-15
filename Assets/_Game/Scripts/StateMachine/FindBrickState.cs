@@ -12,6 +12,7 @@ public class FindBrickState : IState
         time = 0f;
         randomTime = Random.Range(7,10);
         bot.StopMoving();
+        bot.ChangeAnim("run");
     }
 
     public void OnExecute(Bot bot)

@@ -539,14 +539,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b784bde66b7c7e94d8d4d2abee009dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapPrefap: {fileID: 6226401781053087592, guid: 560e986cc5b50214bb5fb7fbd0c8343b, type: 3}
   playerPrefab: {fileID: 2618197279141127526, guid: 213defba834a3bc44b1998ceb5edf9fa, type: 3}
   botPrefab: {fileID: 3351183222066698043, guid: 6e2f103f63d768948a1ff07c51bf6f7b, type: 3}
   levelPrefabs:
   - {fileID: 6367742773065411596, guid: 42e101e16f2e88d49b776adb03a9016a, type: 3}
   - {fileID: 65179207607386172, guid: cb7b9395b08ad784c93c5ba86b905b54, type: 3}
   - {fileID: 6226401781053087592, guid: 560e986cc5b50214bb5fb7fbd0c8343b, type: 3}
-  camera: {fileID: 963194229}
+  cameraMain: {fileID: 963194229}
   levelParent: {fileID: 0}
   startPointManager: {fileID: 0}
   level: 0

@@ -6,13 +6,12 @@ using UnityEngine;
 public class LevelManager : Singleton<LevelManager>
 {
     // Start is called before the first frame update
-    [SerializeField] private GameObject mapPrefap;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject botPrefab;
 
     [SerializeField] private List<GameObject> levelPrefabs;
 
-    [SerializeField] private CameraFollow camera;
+    [SerializeField] private CameraFollow cameraMain;
 
     private GameObject mapInstantiate;
     private GameObject playerInstantiate;
@@ -26,7 +25,10 @@ public class LevelManager : Singleton<LevelManager>
 
     public int level;
 
-
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         
@@ -45,7 +47,6 @@ public class LevelManager : Singleton<LevelManager>
 
         colors = new List<int>() { 1, 2, 3, 4, 5 };
         //load map
-        //mapInstantiate = Instantiate(mapPrefap);
 
         mapInstantiate = Instantiate(levelPrefabs[levelIndex], this.levelParent.transform);
         //load player
@@ -56,8 +57,8 @@ public class LevelManager : Singleton<LevelManager>
         playerInstantiate.transform.position = startPointManager.startPoints[0].transform.position;
         startPointManager.startPoints.Remove(startPointManager.startPoints[0]);
         //set up camera cho player
-        camera.target = playerInstantiate;
-        camera.SetUpCamera();
+        cameraMain.target = playerInstantiate;
+        cameraMain.SetUpCamera();
         //load bot
         for (int i=0; i< 4; i++)
         {
@@ -70,11 +71,11 @@ public class LevelManager : Singleton<LevelManager>
 
     public void SaveLevel()
     {
-        PlayerPrefs.SetInt("Level_Save", level);
+        PlayerPrefs.SetInt(Constants.Level_Save, level);
     }
     public int GetLevelInSave()
     {
-        return PlayerPrefs.GetInt("Level_Save");
+        return PlayerPrefs.GetInt(Constants.Level_Save);
     }
 
     public void DestroyLevel()

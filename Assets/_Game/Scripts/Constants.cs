@@ -16,6 +16,7 @@ public class Constants
     public const string Layer_Step = "Step";
     public const string Layer_Brick = "Brick";
 
-
+    //PlayerPref
+    public const string Level_Save = "Level_Save";
 }
 

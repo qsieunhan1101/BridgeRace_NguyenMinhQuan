@@ -51,6 +51,10 @@ public class JoystickController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.GetCurrentState() != GameState.Gameplay)
+        {
+            return;
+        }
         HandleInput();
     }
 

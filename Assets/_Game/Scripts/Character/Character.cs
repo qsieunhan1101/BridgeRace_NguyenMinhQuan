@@ -11,7 +11,8 @@ public class Character : MonoBehaviour
     [SerializeField] public List<GameObject> listCharacterBrick;
 
 
-
+    [SerializeField] private Animator anim;
+    private string currentAnimName;
 
     [SerializeField] private Transform characterAnimPosStair;
 
@@ -60,6 +61,15 @@ public class Character : MonoBehaviour
     protected void ClearBrick()
     {
 
+    }
+    public void ChangeAnim(string animName)
+    {
+        if (currentAnimName != animName)
+        {
+            anim.ResetTrigger(animName);
+            currentAnimName = animName;
+            anim.SetTrigger(animName); 
+        }
     }
 
     protected void ChangeColor(ColorType colorType)

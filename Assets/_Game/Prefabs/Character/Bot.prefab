@@ -76,6 +76,7 @@ MonoBehaviour:
   characterBrickPrefab: {fileID: 2713778044762302904, guid: 299c5c0e444d0064cb61d9334a242d8a, type: 3}
   characterBrickParent: {fileID: 1467251488645439490}
   listCharacterBrick: []
+  anim: {fileID: 853827641076302484}
   characterAnimPosStair: {fileID: 6455892869260842223}
   isStair: 0
   rayDist: {x: 0, y: 0, z: 0.5}

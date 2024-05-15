@@ -36,10 +36,6 @@ public class Player : Character
         //transform.Translate(direction * speed * Time.deltaTime);
         rb.velocity = new Vector3(direction.x*speed, rb.velocity.y, direction.z*speed);
     }
-    private void ChangeAnim()
-    {
-
-    }
 
     private void GetDirection()
     {
@@ -80,20 +76,26 @@ public class Player : Character
                 direction.z = direction.y;
                 direction.y = 0;
                 rotationDirect = direction;
+                ChangeAnim("run");
             }
             if (touch.phase == TouchPhase.Ended)
             {
                 direction = Vector3.zero;
+                ChangeAnim("idle");
             }
         }
     }
 
     private void GetRotationState()
     {
+        if (GameManager.Instance.GetCurrentState() != GameState.Gameplay)
+        {
+            return;
+        }
         rotationPlayer.rotation = Quaternion.LookRotation(rotationDirect);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
         if (other.gameObject.CompareTag(Constants.Tag_FinishBox))

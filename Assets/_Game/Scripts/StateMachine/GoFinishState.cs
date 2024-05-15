@@ -6,7 +6,7 @@ public class GoFinishState : IState
     
     public void OnEnter(Bot bot)
     {
-        
+        bot.ChangeAnim("run");
     }
 
     public void OnExecute(Bot bot)

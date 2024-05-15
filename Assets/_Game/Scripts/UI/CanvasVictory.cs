@@ -27,7 +27,7 @@ public class CanvasVictory : UICanvas
         UIManager.Instance.OpenUI<CanvasGamePlay>();
         GameManager.Instance.ChangeState(GameState.Gameplay);
         LevelManager.Instance.DestroyLevel();
-        LevelManager.Instance.LoadLevel(LevelManager.Instance.GetLevelInSave());
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.GetLevelInSave() - 1);
         
 
     }

@@ -73,4 +73,12 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 0;
     }
+
+
+
+
+    public GameState GetCurrentState()
+    {
+        return CurrentState;
+    }
 }

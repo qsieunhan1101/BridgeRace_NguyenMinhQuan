@@ -9,6 +9,7 @@ public class IdleState : IState
     public void OnEnter(Bot bot)
     {
         bot.StopMoving();
+        bot.ChangeAnim("idle");
         timeIdle = 1f;
     }
 
@@ -19,6 +20,7 @@ public class IdleState : IState
         {
             bot.ChangeState(new FindBrickState());
         }
+        
     }
 
     public void OnExit(Bot bot)

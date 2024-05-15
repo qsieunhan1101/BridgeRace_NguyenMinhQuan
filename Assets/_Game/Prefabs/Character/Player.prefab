@@ -53,6 +53,7 @@ MonoBehaviour:
   characterBrickPrefab: {fileID: 2713778044762302904, guid: 299c5c0e444d0064cb61d9334a242d8a, type: 3}
   characterBrickParent: {fileID: 5043970780941522744}
   listCharacterBrick: []
+  anim: {fileID: 1181801532728493121}
   characterAnimPosStair: {fileID: 4865301141106777570}
   isStair: 0
   rayDist: {x: 0, y: 0, z: 0.55}
@@ -66,7 +67,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2618197279141127526}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 75209668918e43b4287b9b8ff564109d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
